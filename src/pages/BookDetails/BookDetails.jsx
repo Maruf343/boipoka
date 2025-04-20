@@ -1,6 +1,10 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import { addToStoredDB } from '../../Utilities/addToDB';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const BookDetails = () => {
     const {id} = useParams();
@@ -12,6 +16,11 @@ const BookDetails = () => {
     // console.log(data);
     const handleMarkAsRead = (id)=>{
         addToStoredDB(id);
+        MySwal.fire({
+            title: "Drag me!",
+            icon: "success",
+            draggable: true
+          })
     }
     return (
         <div className='flex my-10'>
